@@ -59,4 +59,20 @@ public class Fraction {
         Fraction answer = new Fraction(n, d);
         return answer;
     }
+    
+    public void reduce () { //no parameter
+int G = GCF (numerator, denominator);
+		numerator = numerator / G;
+		denominator = denominator / G;
+	}
+	
+	public int GCF (int a, int b) {
+	
+		while (a != b) {
+			if (a > b) a -= b;
+			if (a < b) b -= a;
+			}
+	return a;
+	}
+	
 }
