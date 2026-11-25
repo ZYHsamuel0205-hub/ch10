@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Fraction {
     // instance variable (atrributes, fields)
 
@@ -5,8 +7,10 @@ public class Fraction {
 
     // constructors
     public Fraction() { // default constructor (no parameter)
-        setNum(1);
-        setDenom(1);
+       Random random = new Random();
+
+        setNum(random.nextInt(9) + 1);
+        setDenom(random.nextInt(9) + 1);
     }
 
     public Fraction(int n, int d) { // parameterized constructor
@@ -52,27 +56,67 @@ public class Fraction {
             System.out.println("Error");
         }
     }
+    
+       public void setSign(int s) {
+        String sign = "";
+        
+        if (s == 0) sign += "+";
+          if (s == 1) sign += "-";
+            if (s == 2) sign += "*";
+		  if (s == 3) sign += "/";
+	}
 
     public static Fraction mult(Fraction a, Fraction b) {
         int n = a.getNum() * b.getNum();
         int d = a.getDenom() * b.getDenom();
         Fraction answer = new Fraction(n, d);
+        answer.reduce();
         return answer;
     }
-    
-    public void reduce () { //no parameter
-int G = GCF (numerator, denominator);
-		numerator = numerator / G;
-		denominator = denominator / G;
-	}
-	
-	public int GCF (int a, int b) {
-	
-		while (a != b) {
-			if (a > b) a -= b;
-			if (a < b) b -= a;
-			}
-	return a;
-	}
-	
+
+    public static Fraction div(Fraction a, Fraction b) {
+         int n = a.getNum() * b.getDenom();
+    int d = a.getDenom() * b.getNum();
+        Fraction answer = new Fraction(n, d);
+        answer.reduce();
+        return answer;
+    }
+    public static Fraction add(Fraction a, Fraction b) {
+        int n1 = a.getNum() * b.getDenom();
+        int n2 = b.getNum() * a.getDenom();
+        int n = n1 + n2;
+        int d = a.getDenom() * b.getDenom();
+        Fraction answer = new Fraction(n, d);
+        answer.reduce();
+        return answer;
+    }
+
+    public static Fraction minus (Fraction a, Fraction b) {
+        int n1 = a.getNum() * b.getDenom();
+        int n2 = b.getNum() * a.getDenom();
+        int n = n1 - n2;
+        int d = a.getDenom() * b.getDenom();
+        Fraction answer = new Fraction(n, d);
+        answer.reduce();
+        return answer;
+    }
+
+    public void reduce() { // no parameter
+        int G = GCF(numerator, denominator);
+        numerator = numerator / G;
+        denominator = denominator / G;
+    }
+
+    public int GCF(int a, int b) {
+       a = Math.abs(a);
+    b = Math.abs(b);
+    if (a == 0)  return b;
+    if (b == 0)  return a;
+        
+        while (a != b) {
+            if (a > b) a -= b;
+            if (a < b) b -= a;
+        }
+        return a;
+    }
 }
