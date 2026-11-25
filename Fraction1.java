@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Fraction {
     // instance variable (atrributes, fields)
 
@@ -5,8 +7,10 @@ public class Fraction {
 
     // constructors
     public Fraction() { // default constructor (no parameter)
-        setNum(1);
-        setDenom(1);
+       Random random = new Random();
+
+        setNum(random.nextInt(9) + 1);
+        setDenom(random.nextInt(9) + 1);
     }
 
     public Fraction(int n, int d) { // parameterized constructor
