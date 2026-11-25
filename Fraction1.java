@@ -62,8 +62,8 @@ public class Fraction {
     }
 
     public static Fraction div(Fraction a, Fraction b) {
-        int n = a.getNum() / b.getDenom();
-        int d = a.getDenom() / b.getNum();
+         int n = a.getNum() * b.getDenom();
+    int d = a.getDenom() * b.getNum();
         Fraction answer = new Fraction(n, d);
         answer.reduce();
         return answer;
@@ -95,11 +95,15 @@ public class Fraction {
     }
 
     public int GCF(int a, int b) {
+       a = Math.abs(a);
+    b = Math.abs(b);
+    if (a == 0)  return b;
+
+    if (b == 0)  return a;
+        
         while (a != b) {
-            if (a > b)
-                a -= b;
-            if (a < b)
-                b -= a;
+            if (a > b) a -= b;
+            if (a < b) b -= a;
         }
         return a;
     }
