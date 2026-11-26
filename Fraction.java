@@ -1,3 +1,5 @@
+//static calls from class!!!!!!!
+//  void = method that performs an action, does not return any value
 import java.util.Random;
 
 public class Fraction {
@@ -7,7 +9,7 @@ public class Fraction {
 
     // constructors
     public Fraction() { // default constructor (no parameter)
-       Random random = new Random();
+        Random random = new Random();
 
         setNum(random.nextInt(9) + 1);
         setDenom(random.nextInt(9) + 1);
@@ -24,7 +26,7 @@ public class Fraction {
         numerator = Integer.parseInt(n);
         denominator = Integer.parseInt(d);
     }
-
+ 
     public Fraction(Fraction f) {
         setNum(f.numerator);
         setDenom(f.denominator);
@@ -56,15 +58,20 @@ public class Fraction {
             System.out.println("Error");
         }
     }
-    
-       public void setSign(int s) {
+
+    public static String setSign(int s) {
         String sign = "";
-        
-        if (s == 0) sign += "+";
-          if (s == 1) sign += "-";
-            if (s == 2) sign += "*";
-		  if (s == 3) sign += "/";
-	}
+
+        if (s == 0)
+            sign += "+";
+        if (s == 1)
+            sign += "-";
+        if (s == 2)
+            sign += "*";
+        if (s == 3)
+            sign += "/";
+        return sign;
+    }
 
     public static Fraction mult(Fraction a, Fraction b) {
         int n = a.getNum() * b.getNum();
@@ -75,8 +82,8 @@ public class Fraction {
     }
 
     public static Fraction div(Fraction a, Fraction b) {
-         int n = a.getNum() * b.getDenom();
-    int d = a.getDenom() * b.getNum();
+        int n = a.getNum() * b.getDenom();
+        int d = a.getDenom() * b.getNum();
         Fraction answer = new Fraction(n, d);
         answer.reduce();
         return answer;
@@ -91,7 +98,7 @@ public class Fraction {
         return answer;
     }
 
-    public static Fraction minus (Fraction a, Fraction b) {
+    public static Fraction minus(Fraction a, Fraction b) {
         int n1 = a.getNum() * b.getDenom();
         int n2 = b.getNum() * a.getDenom();
         int n = n1 - n2;
@@ -108,14 +115,18 @@ public class Fraction {
     }
 
     public int GCF(int a, int b) {
-       a = Math.abs(a);
-    b = Math.abs(b);
-    if (a == 0)  return b;
-    if (b == 0)  return a;
-        
+        a = Math.abs(a);
+        b = Math.abs(b);
+        if (a == 0)
+            return b;
+        if (b == 0)
+            return a;
+
         while (a != b) {
-            if (a > b) a -= b;
-            if (a < b) b -= a;
+            if (a > b)
+                a -= b;
+            if (a < b)
+                b -= a;
         }
         return a;
     }
