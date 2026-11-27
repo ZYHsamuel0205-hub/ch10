@@ -1,5 +1,7 @@
 //static calls from class!!!!!!!
 //  void = method that performs an action, does not return any value
+//object needs toString() to be converted & printed 
+
 import java.util.Random;
 
 public class Fraction {
